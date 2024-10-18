@@ -12,6 +12,9 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+//routes
+app.use("/api/users", require('./routes/user.route.js'));
+
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB');
     app.listen(PORT, () => console.log(`Server running at PORT: ${PORT}.`));
