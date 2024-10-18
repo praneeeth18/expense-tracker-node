@@ -21,6 +21,10 @@ const UserSchema = mongoose.Schema(
         expenses: [{
             type: mongoose.Schema.Types.ObjectId, // Reference to the Expense model
             ref: 'Expense'
+        }],
+        budgets: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Budget'
         }]
     },
     {

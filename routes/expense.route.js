@@ -4,6 +4,6 @@ const { getAllExpenses, createExpense, getExpensesByUser} = require('../controll
 
 router.get('/', getAllExpenses);
 router.post('/', createExpense);
-router.post('/getExpensesByUser', getExpensesByUser);
+router.get('/getExpensesByUser/:userId', getExpensesByUser);
 
 module.exports = router;

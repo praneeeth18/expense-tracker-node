@@ -2,7 +2,7 @@ const Expense = require('../models/Expense');
 const User = require('../models/User');
 
 const createExpense = async (req, res) => {
-    const { amount, description, category, email, userId } = req.body;
+    const { amount, description, category, userId } = req.body;
 
     if (!amount || !category) return res.status(400).json({ message: "Amount and category are required!"});
 
@@ -40,7 +40,8 @@ const getAllExpenses = async (req, res) => {
 }
 
 const getExpensesByUser = async (req, res) => {
-    const { userId } = req.body;
+    // const { userId } = req.body;
+    const userId = req.params.userId;
     try {
         // Find all expenses for the currently logged-in user
         const expenses = await Expense.find({ user: userId });
