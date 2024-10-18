@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConnection.js');
 const app = express();
+const runCronJob = require('./cron/notificationCronJob.js');
 const PORT = process.env.PORT || 3500;
 
 //dbconnection
@@ -16,6 +17,9 @@ app.use(express.urlencoded({extended: false}));
 app.use("/api/users", require('./routes/user.route.js'));
 app.use("/api/expenses", require('./routes/expense.route.js'));
 app.use("/api/budgets", require('./routes/budget.route.js'));
+app.use("/api/notifications", require('./routes/notification.route.js'));
+
+runCronJob();
 
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB');
