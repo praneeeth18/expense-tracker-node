@@ -17,7 +17,11 @@ const UserSchema = mongoose.Schema(
         password: {
             type: String,
             required: [true, "Please enter a password"]
-        }
+        },
+        expenses: [{
+            type: mongoose.Schema.Types.ObjectId, // Reference to the Expense model
+            ref: 'Expense'
+        }]
     },
     {
         timestamps: true

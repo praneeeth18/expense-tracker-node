@@ -52,7 +52,7 @@ const handleLogin = async (req, res) => {
     const match = await bcrypt.compare(password, foundUser.password);
     
     if (match) {
-        res.status(200).json({ message: "User authenticated"})
+        res.status(200).json({ message: "User authenticated", "userId": `${foundUser._id}`});
     } else {
         res.status(401).json({ message: "Enter valid password!"})
     }
